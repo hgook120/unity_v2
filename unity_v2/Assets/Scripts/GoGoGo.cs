@@ -20,7 +20,10 @@ public class GoGoGo : MonoBehaviour
 
     [Header("當前血量"), Range(0, 5)]
     public int currentHealth;
-    
+
+    //發射子彈-1
+    public GameObject projectilePrefab;
+
 
     void Start()
     {
@@ -63,6 +66,12 @@ public class GoGoGo : MonoBehaviour
             Application.LoadLevel("Health_damage");
         }
 
+        //發射子彈-3
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Launch();
+        }
+
     }
 
     //血量控制-3
@@ -71,6 +80,26 @@ public class GoGoGo : MonoBehaviour
         currentHealth = currentHealth + amout;//加血機制-1
         //currentHealth = Math.Clamp(currentHealth + amout, 0, maxHealth); //加血機制-2 改良
         print("Ruby 當前血量為:" + currentHealth);
+    }
+
+    //發射子彈-2
+    private void Launch() //使用private 因此只有此程式專用
+    {
+        //使每個Prefab的子彈都「實例化」成場景物件
+        //生成的過程中必須告知Prefab生成的位置、角度
+        //Quaternion代表無角度旋轉
+        GameObject projectileObject = Instantiate(projectilePrefab, rb.position, Quaternion.identity);
+        //在Bullet.cs中設置了一個Launch()的方法，並透過「受力的方式」來移動
+        //在此設立了一個Bullet的形態的變量，作為乘載此力的施壓容器
+        Bullet bullet = projectileObject.GetComponent<Bullet>();
+
+        //上面接收完畢後，透過自帶的 Launch() 方法來實現「受力的方法」
+        //在Bullet.cs定義參數 : 方向&力道
+        bullet.Launch(lookDirection, 200);//300 數值越大，速度越快
+
+        //發射後播放動畫
+        rubyAnimator.SetTrigger("Launch");
+
     }
 
 

@@ -13,8 +13,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Ruby
+  - Bullet
   - PC
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Building
     uniqueID: 3457351901
+    locked: 0
+  - name: Bullet
+    uniqueID: 2817412651
     locked: 0
