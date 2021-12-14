@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+
+    public AudioClip audioClip;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GoGoGo rubyMove = collision.GetComponent<GoGoGo>();
         print("碰到的東西是:" + rubyMove);
         rubyMove.ChangeHealth(1);
         Destroy(gameObject);
+
+        //音效
+        GoGoGo.PlaySound(audioClip);
     }
 
 }

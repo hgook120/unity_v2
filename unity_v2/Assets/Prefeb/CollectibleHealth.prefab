@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2102899558380209560}
   - component: {fileID: 2102899558380209566}
   - component: {fileID: 2102899558380209565}
+  - component: {fileID: 3898537489014386770}
   m_Layer: 0
   m_Name: CollectibleHealth
   m_TagString: Untagged
@@ -112,3 +113,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1afb27295ceee40a1d896134b23a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &3898537489014386770
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102899558380209561}
+  m_Enabled: 1

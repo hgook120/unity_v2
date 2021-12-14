@@ -24,6 +24,8 @@ public class GoGoGo : MonoBehaviour
     //發射子彈-1
     public GameObject projectilePrefab;
 
+    //音效
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class GoGoGo : MonoBehaviour
         //血量控制-2
         currentHealth = maxHealth;
         print("Ruby當前血量為:" + currentHealth);
+
     }
 
     // Update is called once per frame
@@ -47,7 +50,7 @@ public class GoGoGo : MonoBehaviour
 
         rubyMove = new Vector2(horizontal, vertical);
 
-        if(!Mathf.Approximately(rubyMove.x, 0) || !Mathf.Approximately(rubyMove.y, 0))
+        if (!Mathf.Approximately(rubyMove.x, 0) || !Mathf.Approximately(rubyMove.y, 0))
         {
             lookDirection = rubyMove;
             lookDirection.Normalize();
@@ -67,7 +70,7 @@ public class GoGoGo : MonoBehaviour
         }
 
         //發射子彈-3
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             Launch();
         }
@@ -95,7 +98,7 @@ public class GoGoGo : MonoBehaviour
 
         //上面接收完畢後，透過自帶的 Launch() 方法來實現「受力的方法」
         //在Bullet.cs定義參數 : 方向&力道
-        bullet.Launch(lookDirection, 200);//300 數值越大，速度越快
+        bullet.Launch(lookDirection, 10);//300 數值越大，速度越快
 
         //發射後播放動畫
         rubyAnimator.SetTrigger("Launch");
