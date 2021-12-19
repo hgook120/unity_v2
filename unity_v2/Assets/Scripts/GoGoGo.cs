@@ -27,6 +27,9 @@ public class GoGoGo : MonoBehaviour
     //音效
     public AudioSource audioSource;
 
+    //受傷音效
+    public AudioClip playerHit;
+
     void Start()
     {
         rubyAnimator = GetComponent<Animator>();
@@ -35,6 +38,8 @@ public class GoGoGo : MonoBehaviour
         //血量控制-2
         currentHealth = maxHealth;
         print("Ruby當前血量為:" + currentHealth);
+
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -75,6 +80,7 @@ public class GoGoGo : MonoBehaviour
             Launch();
         }
 
+
     }
 
     //血量控制-3
@@ -83,6 +89,18 @@ public class GoGoGo : MonoBehaviour
         currentHealth = currentHealth + amout;//加血機制-1
         //currentHealth = Math.Clamp(currentHealth + amout, 0, maxHealth); //加血機制-2 改良
         print("Ruby 當前血量為:" + currentHealth);
+    }
+
+    public void PlaySound(AudioClip audioClip)
+    {
+        audioSource.PlayOneShot(audioClip);
+
+        //受傷音效
+        //if (amout < 0)
+        //{
+        //    PlaySound(playerHit);
+        //}
+
     }
 
     //發射子彈-2

@@ -12,10 +12,13 @@ public class Collectable : MonoBehaviour
         GoGoGo rubyMove = collision.GetComponent<GoGoGo>();
         print("碰到的東西是:" + rubyMove);
         rubyMove.ChangeHealth(1);
-        Destroy(gameObject);
+        
 
         //音效
-        GoGoGo.PlaySound(audioClip);
+        rubyMove.PlaySound(audioClip);
+
+        Destroy(gameObject);
     }
+
 
 }
